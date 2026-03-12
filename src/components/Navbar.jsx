@@ -9,34 +9,34 @@ function Navbar() {
   const [openCategory, setOpenCategory] = useState(null)
 
   const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen)
-const toggleServices = () => {
+  const toggleServices = () => {
     setOpenCategory(openCategory ? null : 'services')
   }
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       {/* Desktop + Mobile Logo & Hamburger */}
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
-        <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="Supriya Consultancy" className="w-10" />
+      <div className="max-w-7xl mx-auto flex justify-between items-center p-2">
+        <div className="flex items-center gap-1">
+          <img src="/logo.png" alt="Supriya Consultancy" className="w-50 h-30" />
           <span className="font-bold text-xl text-gray-800 md:block hidden">
-            Supriya Consultancy
+
           </span>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-6 items-center">
-          <Link to="/" className="text-gray-700 hover:text-blue-700 font-medium transition">
+          <Link to="/" className="text-gray-700 hover:text-blue-700 font-xl transition">
             Home
           </Link>
-          <Link to="/about" className="text-gray-700 hover:text-blue-700 font-medium transition">
+          <Link to="/about" className="text-gray-700 hover:text-blue-700 font-xl transition">
             About
           </Link>
-          
+
           {/* Services Dropdown (Desktop) */}
           <div className="relative">
-            <button 
-              className="text-gray-700 hover:text-blue-700 font-medium transition flex items-center gap-1"
+            <button
+              className="text-gray-700 hover:text-blue-700 font-xl transition flex items-center gap-1"
               onMouseEnter={() => setIsServicesOpen(true)}
             >
               Services
@@ -44,10 +44,10 @@ const toggleServices = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            
+
             {/* Desktop Dropdown */}
             {isServicesOpen && (
-              <div 
+              <div
                 className="fixed top-16 left-0 w-full bg-white shadow-2xl rounded-b-2xl border-b border-gray-100 max-h-[70vh] overflow-y-auto z-50 md:absolute md:top-full md:mt-2 md:min-w-[600px] md:left-1/2 md:-translate-x-1/2 md:max-w-md md:w-auto md:rounded-xl"
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
@@ -60,7 +60,7 @@ const toggleServices = () => {
                       <ul className="space-y-2">
                         {category.services.slice(0, 3).map((service) => (
                           <li key={service.slug}>
-                            <Link 
+                            <Link
                               to={`/service/${service.slug}`}
                               className="text-gray-600 hover:text-blue-700 text-sm block transition py-1"
                               onClick={() => setIsServicesOpen(false)}
@@ -93,7 +93,7 @@ const toggleServices = () => {
         </div>
 
         {/* Mobile Hamburger */}
-        <button 
+        <button
           className="md:hidden p-1 -mr-1 rounded-lg text-gray-700 hover:text-blue-700 hover:bg-gray-100 transition"
           onClick={toggleMobileMenu}
         >
@@ -107,13 +107,13 @@ const toggleServices = () => {
       {isMobileOpen && (
         <>
           {/* Backdrop */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/50 z-40 md:hidden"
             onClick={toggleMobileMenu}
           />
-          
+
           {/* Mobile Drawer */}
-          <motion.div 
+          <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -142,9 +142,9 @@ const toggleServices = () => {
                 About
               </Link>
 
-  {/* Mobile Services List */}
+              {/* Mobile Services List */}
               <div>
-                <button 
+                <button
                   className="w-full text-left py-3 px-4 rounded-lg hover:bg-blue-50 font-medium flex justify-between items-center transition"
                   onClick={toggleServices}
                 >
@@ -155,14 +155,14 @@ const toggleServices = () => {
                 </button>
                 <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openCategory === 'services' ? 'max-h-[60vh] opacity-100 py-2' : 'max-h-0 opacity-0'}`}>
                   {serviceCategories.map((category, index) => (
-                    <motion.div 
+                    <motion.div
                       key={category.slug}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       transition={{ delay: index * 0.05 }}
                       className="border-b border-gray-100 last:border-b-0"
                     >
-                      <Link 
+                      <Link
                         to={`/services#${category.slug}`}
                         className="block py-4 pl-4 pr-8 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-blue-700 transition flex items-center gap-2"
                         onClick={toggleMobileMenu}
@@ -171,7 +171,7 @@ const toggleServices = () => {
                       </Link>
                       <div className="pl-8 space-y-1 mb-4">
                         {category.services.slice(0, 3).map((service, sIndex) => (
-                          <Link 
+                          <Link
                             key={service.slug}
                             to={`/service/${service.slug}`}
                             className="text-xs text-gray-600 hover:text-blue-700 block py-1 pl-4 -ml-2 rounded transition hover:bg-blue-50"

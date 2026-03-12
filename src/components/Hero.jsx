@@ -40,7 +40,7 @@ Free Consultation
 </motion.div>
 
 <motion.img
-src="/logo.png"
+src="/hero.jpg"
 className="w-80 mx-auto"
 animate={{y:[0,-20,0]}}
 transition={{duration:4,repeat:Infinity}}

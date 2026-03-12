@@ -41,9 +41,9 @@ function Home() {
             </div>
           </motion.div>
           <motion.img
-            src="/logo.png"
+            src="/hero.jpg"
             alt="Supriya Consultancy"
-            className="w-80 mx-auto"
+            className="w-180 mx-auto"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
