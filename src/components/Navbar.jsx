@@ -47,7 +47,7 @@ const toggleServices = () => {
             {/* Desktop Dropdown */}
             {isServicesOpen && (
               <div 
-                className="absolute top-full mt-2 bg-white shadow-2xl rounded-2xl border border-gray-100 w-[calc(100vw-2rem)] lg:w-[700px] lg:max-w-[90vw] max-w-md left-1/2 -translate-x-1/2 z-50 max-h-[70vh] overflow-y-auto"
+                className="fixed top-16 left-0 w-full bg-white shadow-2xl rounded-b-2xl border-b border-gray-100 max-h-[70vh] overflow-y-auto z-50 md:absolute md:top-full md:mt-2 md:min-w-[600px] md:left-1/2 md:-translate-x-1/2 md:max-w-md md:w-auto md:rounded-xl"
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
                 <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
@@ -152,30 +152,40 @@ const toggleServices = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openCategory === 'services' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  {serviceCategories.map((category) => (
-                    <div key={category.slug} className="border-b border-gray-100 last:border-b-0">
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openCategory === 'services' ? 'max-h-[60vh] opacity-100 py-2' : 'max-h-0 opacity-0'}`}>
+                  {serviceCategories.map((category, index) => (
+                    <motion.div 
+                      key={category.slug}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      transition={{ delay: index * 0.05 }}
+                      className="border-b border-gray-100 last:border-b-0"
+                    >
                       <Link 
                         to={`/services#${category.slug}`}
-                        className="block py-4 pl-4 pr-8 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-700 transition flex items-center gap-2"
+                        className="block py-4 pl-4 pr-8 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-blue-700 transition flex items-center gap-2"
                         onClick={toggleMobileMenu}
                       >
-                        📁 {category.category}
+                        📁 {category.category} ({category.services.length})
                       </Link>
-                      <ul className="ml-8 space-y-1 mb-4">
-                        {category.services.slice(0, 4).map((service) => (
-                          <li key={service.slug}>
-                            <Link 
-                              to={`/service/${service.slug}`}
-                              className="text-xs text-gray-600 hover:text-blue-700 block py-1 pl-2 -ml-1 rounded transition"
-                              onClick={toggleMobileMenu}
-                            >
-                              • {service.title}
-                            </Link>
-                          </li>
+                      <div className="pl-8 space-y-1 mb-4">
+                        {category.services.slice(0, 3).map((service, sIndex) => (
+                          <Link 
+                            key={service.slug}
+                            to={`/service/${service.slug}`}
+                            className="text-xs text-gray-600 hover:text-blue-700 block py-1 pl-4 -ml-2 rounded transition hover:bg-blue-50"
+                            onClick={toggleMobileMenu}
+                          >
+                            • {service.title}
+                          </Link>
                         ))}
-                      </ul>
-                    </div>
+                        {category.services.length > 3 && (
+                          <Link to={`/services#${category.slug}`} className="text-xs text-blue-600 italic block pl-4 hover:underline">
+                            +{category.services.length - 3} more
+                          </Link>
+                        )}
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
