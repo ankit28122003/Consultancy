@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { serviceCategories } from "../data/services"
 
 function Navbar() {
