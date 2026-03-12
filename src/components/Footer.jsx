@@ -34,7 +34,7 @@ function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-gray-400 hover:text-white transition">
+                <Link to={link.path} className="text-gray-400 hover:text-white transition" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     {link.title}
                   </Link>
                 </li>
@@ -52,6 +52,7 @@ function Footer() {
                     <Link 
                       to={`/service/${service.slug}`} 
                       className="text-gray-400 hover:text-white transition text-sm"
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
                       {service.title}
                     </Link>

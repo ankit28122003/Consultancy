@@ -1,4 +1,5 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from 'react'
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
@@ -16,6 +17,19 @@ import Blog from "./pages/Blog"
 import BlogPost from "./pages/BlogPost"
 import WhatsAppButton from "./components/WhatsAppButton"
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [pathname])
+
+  return null
+}
+
 function App(){
 
 return(
@@ -23,13 +37,13 @@ return(
 <BrowserRouter>
 
 <Navbar/>
-
+<ScrollToTop />
 <Routes>
 
 <Route path="/" element={<Home/>}/>
 <Route path="/about" element={<About/>}/>
 <Route path="/services" element={<Services/>}/>
-<Route path="/gst-services" element={<GST/>}/>
+<Route path="/gst" element={<GST/>}/>
 <Route path="/company-registration" element={<CompanyRegistration/>}/>
 <Route path="/trademark" element={<Trademark/>}/>
 <Route path="/income-tax" element={<IncomeTax/>}/>
