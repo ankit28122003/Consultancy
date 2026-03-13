@@ -68,7 +68,7 @@ function Home() {
                 className="bg-white shadow-xl p-6 rounded-xl hover:shadow-2xl transition group"
               >
                 <h3 className="font-bold text-xl mb-3 text-gray-800">{category.category}</h3>
-                <p className="text-gray-600 mb-4">{category.services.length} services</p>
+                {/* <p className="text-gray-600 mb-4">{category.services.length} services</p> */}
                 <Link to="/services" className="text-blue-700 font-medium hover:underline">
                   View Services
                 </Link>

@@ -48,7 +48,7 @@ function Navbar() {
             {/* Desktop Dropdown */}
             {isServicesOpen && (
               <div
-                className="fixed top-16 left-0 w-full bg-white shadow-2xl rounded-b-2xl border-b border-gray-100 max-h-[70vh] overflow-y-auto z-50 md:absolute md:top-full md:mt-2 md:min-w-[600px] md:left-1/2 md:-translate-x-1/2 md:max-w-md md:w-auto md:rounded-xl"
+className="absolute z-[999] bg-white shadow-2xl border rounded-2xl max-h-[70vh] overflow-y-auto w-[95vw] md:w-[650px] md:left-1/2 md:-translate-x-[calc(50%+200px)] md:top-full py-6 px-4 top-16 left-4"
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
                 <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
@@ -167,7 +167,7 @@ function Navbar() {
                         className="block py-4 pl-4 pr-8 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-blue-700 transition flex items-center gap-2"
                         onClick={toggleMobileMenu}
                       >
-                        📁 {category.category} ({category.services.length})
+📁 {category.category}
                       </Link>
                       <div className="pl-8 space-y-1 mb-4">
                         {category.services.slice(0, 3).map((service, sIndex) => (

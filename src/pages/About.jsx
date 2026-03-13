@@ -48,8 +48,8 @@ Based in Delhi, Supriya Consultancy helps startups, entrepreneurs and businesses
 </motion.div>
 
 <motion.img
-src="/logo.png"
-className="w-72 mx-auto"
+src="/aboutus1.webp"
+className="w-120 mx-auto rounded"
 initial={{opacity:0,scale:0.8}}
 animate={{opacity:1,scale:1}}
 transition={{duration:1}}
@@ -67,7 +67,7 @@ transition={{duration:1}}
 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
 
 <motion.img
-src="/logo.png"
+src="/aboutus2.jpg"
 className="rounded-xl shadow-lg"
 initial={{opacity:0,x:-40}}
 whileInView={{opacity:1,x:0}}
